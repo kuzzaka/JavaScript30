@@ -15,4 +15,4 @@ function playSound(e) {
 
 const keys = Array.from(document.querySelectorAll('.key'));
 keys.forEach(key => key.addEventListener('transitionend', resetStyles));
-window.addEventListener('ªkeydown', playSound);
+window.addEventListener('keydown', playSound);
