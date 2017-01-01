@@ -69,10 +69,11 @@
 
 <script>
   const hands = {
-    seconds: document.querySelector('.second-hand'),
-    minutes: document.querySelector('.min-hand'),
-    hours: document.querySelector('.hour-hand')
-  };
+        seconds: document.querySelector('.second-hand'),
+        minutes: document.querySelector('.min-hand'),
+        hours: document.querySelector('.hour-hand')
+      },
+      transitionDurationDefault = '0.5s';
   function countDegrees(time, hand) {
     let rate = 60;
     if (hand === 'hours') {
@@ -89,6 +90,12 @@
         };
     for (let hand in hands) {
       if (hands.hasOwnProperty(hand)) {
+        if (!parseInt(hands[hand].style.transitionDuration)) {
+          hands[hand].style.transitionDuration = transitionDurationDefault;
+        }
+        if (!time[hand]) {
+          hands[hand].style.transitionDuration = '0s';
+        }
         hands[hand].style.transform = `rotate(${countDegrees(time[hand], hand)}deg)`;
       }
     }
